@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function Question({ question, onAnswered }) {
   const [timeRemaining, setTimeRemaining] = useState(10);
+  const timer = useRef(null);
 
-  // add useEffect code
+useEffect(() => {
+    timer.current = setInterval(() => {
+      setTimeRemaining((time) => {
+        return time - 1
+      })
+    },1000)
+    return () => clearInterval(timer.current)
+}, [])
+
+useEffect(() => {
+  if(timeRemaining === 0) {
+    handleAnswer(false)
+  }
+},[timeRemaining])
 
   function handleAnswer(isCorrect) {
     setTimeRemaining(10);

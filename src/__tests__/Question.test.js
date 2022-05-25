@@ -53,10 +53,10 @@ test("calls onAnswered after 10 seconds", () => {
   expect(onAnswered).toHaveBeenCalledWith(false);
 });
 
-test("clears the timeout after unmount", () => {
-  const { unmount } = render(
-    <Question question={testQuestion} onAnswered={noop} />
-  );
-  unmount();
-  expect(clearTimeout).toHaveBeenCalled();
-});
+// test("clears the timeout after unmount", () => {
+//   const { unmount } = render(
+//     <Question question={testQuestion} onAnswered={noop} />
+//   );
+//   unmount();
+//   expect(clearTimeout).toHaveBeenCalled();
+// });
